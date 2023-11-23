@@ -47,6 +47,8 @@ import { DeleteBarberosComponent } from './admins/components/barberos/delete-bar
 import { ExperienciaPipe } from './core/pipes/experiencia.pipe';
 import { BarberosPageComponent } from './components/barberos-page/barberos-page.component';
 
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -97,7 +99,9 @@ import { BarberosPageComponent } from './components/barberos-page/barberos-page.
     MatToolbarModule,
     MatSidenavModule,
     MatExpansionModule,
-    MatDialogModule
+    MatDialogModule,
+
+    NgxMaterialTimepickerModule
 
   ],
 

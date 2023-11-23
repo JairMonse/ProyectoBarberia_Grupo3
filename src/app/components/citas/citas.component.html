@@ -1,111 +1,202 @@
 <app-header></app-header>
-<p>citas works!</p>
-<p style="background-color: aquamarine;">registrar-cliente works!</p>
-<!-- Autor: Jair Monserrate T. -->
-<div class="container mt-4">
-    <section>
-    <mat-card class="card">
-      <mat-card-subtitle>
-        Registro CLIENTES
-      </mat-card-subtitle>
-      <form [formGroup]="form" (ngSubmit)="agregarCita()" class="container text-center">
-  
-        <mat-grid-list cols="2" rowHeight="85px" >
-  
-          <mat-grid-tile>
-            <mat-form-field appearance="outline">
-              <mat-label>Cedula</mat-label>
-              <input formControlName="cedula" matInput autocomplete="off">
-              <mat-error *ngIf="this.form.controls['cedula'].hasError('pattern')">El formato no es el requerido
-              </mat-error>
-            </mat-form-field>
-          </mat-grid-tile>
-          
-      <mat-grid-tile>
-            <mat-form-field appearance="outline">
-              <mat-label>Apellidos</mat-label>
-              <input formControlName="apellido" matInput autocomplete="off">
-            </mat-form-field>
-          </mat-grid-tile>
-  
-          <mat-grid-tile>
-            <mat-form-field appearance="outline">
-              <mat-label>Nombres</mat-label>
-              <input formControlName="nombre" matInput autocomplete="off">
-            </mat-form-field>
-          </mat-grid-tile>
-          
-          <mat-grid-tile>
-            <mat-form-field appearance="outline">
-              <mat-label>Correo electronico</mat-label>
-              <input formControlName="correoE" matInput autocomplete="off">
-            </mat-form-field>
-          </mat-grid-tile>
-  
-          <mat-grid-tile [colspan]="2">
-  
-            <button [disabled]="form.invalid" type="submit" class="btnAceptar" mat-raised-button
-              color="primary">Agregar</button>
-            <button mat-raised-button type="button" (click)="cancelar()">Cancelar</button>
-          </mat-grid-tile>
-  
-        </mat-grid-list>
-      </form>
-    </mat-card>
-  
-  </section>
-  <br>
-  <section>
-  
-    <mat-divider></mat-divider>
-    <mat-form-field>
-      <mat-label>Filter</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Buscar" #input autocomplete="false">
-    </mat-form-field>
-  
-    <table mat-table [dataSource]="dataSource"  matSort>
-  
-      <ng-container matColumnDef="cedula">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Cedula </th>
-        <td mat-cell *matCellDef="let element"> {{element.cedula}} </td>
-      </ng-container>
-  
-      <ng-container matColumnDef="apellido">
-        <th mat-header-cell *matHeaderCellDef> Apellido </th>
-        <td mat-cell *matCellDef="let element"> {{element.apellido}} </td>
-      </ng-container>
-  
-      <ng-container matColumnDef="nombre">
-        <th mat-header-cell *matHeaderCellDef> Nombre </th>
-        <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="correoE">
-        <th mat-header-cell *matHeaderCellDef> Corrreo E </th>
-        <td mat-cell *matCellDef="let element"> {{element.correoE}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="acciones">
-        <th mat-header-cell *matHeaderCellDef> Acciones </th>
-        <td mat-cell *matCellDef="let element">
-          <mat-icon (click)="mostrar(element)" class="edit" fontIcon="search"
-            matTooltip="Editar"></mat-icon>
-          <mat-icon routerLink="/editarCita/{{element.cedula}}" class="edit" fontIcon="edit"
-            matTooltip="Editar"></mat-icon>
-          <mat-icon (click)="eliminarCita(element.cedula)" class="delete" fontIcon="delete"
-            matTooltip="Eliminar"></mat-icon>
-  
-        </td>
-        
-      </ng-container>
-  
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-    <br>
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
-    </mat-paginator>
-    
-  </section>
+<div class="best-pricing section-padding2 position-relative">
+  <div class="container">
+      <div class="row pricing-list">
+          <div class="col-xl-7 col-lg-7">
+              <div class="section-tittle mb-50">
+                  <h2>¡Ofrecemos los mejores precios<br> en la ciudad!</h2>
+                  <h3>Nuestra Mejor Tarifa</h3>
+              </div>
+              <!-- Precios -->
+              <div class="row">
+                  <div class="col-lg-6 col-md-6 col-sm-6">
+                      <div class="pricing-list">
+                          <ul>
+                              <li>Estilismo. . . . . . . . . . . . . . . . . . . . . . . . . . . . <span>$25</span></li>
+                              <li>Estilismo + Color. . . . . . . . . . . . . . . . . . . <span>$65</span></li>
+                              <li>Estilismo + Tinte. . . . . . . . . . . . . . . . . . . . .<span>$65</span></li>
+                              <li>Ondulación semi-permanente. . . . . . . . . . . .<span>$65</span></li>
+                              <li>Corte + Estilismo. . . . . . . . . . . . . . . . . . . . . .<span>$63</span></li>
+                              <li>Corte + Estilismo + Color. . . . . . . . . . . . . <span>$100</span></li>
+                              <li>Corte + Estilismo + Tinte. . . . . . . . . . . . . . .<span>$100</span></li>
+                          </ul>
+                      </div>
+                  </div>
+<div class="col-lg-6 col-md-6 col-sm-6">
+                      <div class="pricing-list">
+                          <ul>
+                              <li>Corte. . . . . . . . . . . . . . . . . . . . . . . . . . . . .<span>$25</span></li>
+                              <li>Afeitado. . . . . . . . . . . . . . . . . . . . . . . . . . <span>$65</span></li>
+                              <li>Recorte de barba. . . . . . . . . . . . . . . . . . . .  <span>$65</span></li>
+                              <li>Corte + recorte de barba. . . . . . . . . . . . . . . .  <span>$65</span></li>
+                              <li>Corte + afeitado. . . . . . . . . . . . . . . . . . . . . . .<span>$63</span></li>
+                              <li>Arreglo. . . . . . . . . . . . . . . . . . . . . . . . . . .<span>$100</span></li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
   </div>
-  <app-footer></app-footer>
+  <!-- Imágenes de precios -->
+  <div class="pricing-img">
+      <img class="pricing-img1" src="assets/img/image7.png" alt="">
+      <img class="pricing-img2" src="assets/img/image8.png" alt="">
+  </div>
+</div>
+
+<div class="container mt-4">
+  <section>
+  <mat-card class="card">
+    <mat-card-subtitle>
+      Registro Citas
+    </mat-card-subtitle>
+    <form [formGroup]="form" (ngSubmit)="agregarCitas()" class="container text-center">
+
+      <mat-grid-list cols="2" rowHeight="85px" >
+        
+        <mat-grid-tile>
+          <mat-form-field>
+            <mat-label>Fecha Cita</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="fechaCita">
+            <!--mat-hint>MM/DD/YYYY</mat-hint-->
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Hora:</mat-label>
+          <input matInput [ngxTimepicker]="timepicker" formControlName="hora" required>
+          <ngx-material-timepicker #timepicker></ngx-material-timepicker>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+          <mat-form-field appearance="outline">
+            <mat-label>Tipo de servicio</mat-label>
+            <mat-select formControlName="tipoServicio">
+              <mat-option *ngFor="let tipoServicio of listaServicios" [value]="tipoServicio.valor">
+                {{tipoServicio.valor}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-form-field appearance="outline">
+            <mat-label>Nombre Barbero</mat-label>
+            <mat-select formControlName="nombreBarbero">
+              <mat-option *ngFor="let nombreBarbero of listaBarberos" [value]="nombreBarbero.valor">
+                {{nombreBarbero.valor}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+
+
+        <mat-grid-tile>
+          <mat-form-field appearance="outline">
+            <mat-label>Nombres</mat-label>
+            <input formControlName="nombres" matInput autocomplete="off">
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-form-field appearance="outline">
+            <mat-label>Telefono</mat-label>
+            <input formControlName="telefono" matInput autocomplete="off">
+          </mat-form-field>
+        </mat-grid-tile>
+        
+        <mat-grid-tile>
+          <mat-form-field appearance="outline">
+            <mat-label>Correo electronico</mat-label>
+            <input formControlName="correoE" matInput autocomplete="off">
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="2">
+
+          <button [disabled]="form.invalid" type="submit" class="btnAceptar" mat-raised-button
+            color="primary">Agregar</button>
+          <button mat-raised-button type="button" (click)="cancelar()">Cancelar</button>
+        </mat-grid-tile>
+
+      </mat-grid-list>
+    </form>
+  </mat-card>
+
+</section>
+<br>
+<section>
+
+  <mat-divider></mat-divider>
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Buscar" #input autocomplete="false">
+  </mat-form-field>
+
+  <table mat-table [dataSource]="dataSource"  matSort>
+
+    <ng-container matColumnDef="fechaCita">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha cita </th>
+      <td mat-cell *matCellDef="let element"> {{element.fechaCita | date:"MM/dd/yyyy"}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="hora">
+      <th mat-header-cell *matHeaderCellDef> Hora </th>
+      <td mat-cell *matCellDef="let element"> {{element.hora}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="tipoServicio">
+      <th mat-header-cell *matHeaderCellDef> Tipo servicio</th>
+      <td mat-cell *matCellDef="let element"> {{element.tipoServicio}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="nombreBarbero">
+      <th mat-header-cell *matHeaderCellDef> Nombre barbero </th>
+      <td mat-cell *matCellDef="let element"> {{element.nombreBarbero}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="nombres">
+      <th mat-header-cell *matHeaderCellDef> Nombres </th>
+      <td mat-cell *matCellDef="let element"> {{element.nombres}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="telefono">
+      <th mat-header-cell *matHeaderCellDef> Telefonos </th>
+      <td mat-cell *matCellDef="let element"> {{element.telefono}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="correoE">
+      <th mat-header-cell *matHeaderCellDef> Correo Electronico</th>
+      <td mat-cell *matCellDef="let element"> {{element.correoE}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef> Acciones </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-icon (click)="mostrar(element)" class="edit" fontIcon="search"
+          matTooltip="Editar"></mat-icon>
+        <mat-icon routerLink="/editarCita/{{element.nombres}}" class="edit" fontIcon="edit"
+          matTooltip="Editar"></mat-icon>
+        <mat-icon (click)="eliminarCita(element.nombres)" class="delete" fontIcon="delete"
+          matTooltip="Eliminar"></mat-icon>
+
+      </td>
+      
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <br>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+  </mat-paginator>
+  
+</section>
+</div>
+<app-footer></app-footer>

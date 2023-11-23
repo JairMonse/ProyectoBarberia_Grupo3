@@ -1,0 +1,48 @@
+/* Estilos generales */
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .card {
+    padding: 20px;
+    text-align: center;
+    background-color: #f4f4f4;
+  }
+  
+  /* Estilos para los campos de entrada */
+  mat-form-field {
+    width: 100%;
+    margin-top: 15px;
+  }
+  
+  /* Estilos para los botones */
+  mat-raised-button {
+    margin-top: 15px;
+  }
+  
+  /* Estilo específico para el botón de aceptar */
+  .btnAceptar {
+    background-color: #333;
+    color: white;
+  }
+  
+  /* Estilos para el enlace de registro de usuario */
+  mat-raised-button[routerLink="crear-usuario"] {
+    margin-top: 10px;
+    background-color: #4285f4;
+    color: white;
+  }
+  
+  /* Estilos para el formulario en general */
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Alineación de la etiqueta "Login" */
+  mat-card-subtitle {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  

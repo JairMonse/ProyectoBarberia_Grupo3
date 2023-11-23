@@ -23,12 +23,7 @@ const routes: Routes = [
       { path: 'crear-usuario', component: CrearUsuarioComponent },
     ]
   },
-  {
-    path: 'cliente', component: ClienteComponent,
-    children: [
-      { path: 'registrar-cliente', component: RegistrarClienteComponent },
-    ]
-  },
+  { path: 'cliente', component: ClienteComponent},
   { path: 'inventario', component: InventarioComponent },
   { path: 'ventas', component: VentasComponent },
   { path: 'citas', component: CitasComponent },

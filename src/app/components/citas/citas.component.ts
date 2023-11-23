@@ -5,8 +5,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Cliente } from '../interface/Cliente';
 import { Citas } from '../interface/Citas';
+import { Opciones } from '../interface/Opciones';
 
 @Component({
   selector: 'app-citas',
@@ -14,11 +14,20 @@ import { Citas } from '../interface/Citas';
   styleUrls: ['./citas.component.css']
 })
 export class CitasComponent {
-
   form: FormGroup;
   listaCitas: Citas[] = [];
 
-  displayedColumns: string[] = ['fechaCita','hora','tipoServicio','nombreBarbero','telefono','correoE', 'acciones'];
+  listaBarberos: Opciones[] = [
+    { id: 1, valor: 'David S' },
+    { id: 2, valor: 'William Q' },
+  ];
+
+  listaServicios: Opciones[] = [
+    { id: 1, valor: 'Afeitar' },
+    { id: 2, valor: 'Corte de pelo' },
+  ];
+
+  displayedColumns: string[] = ['fechaCita','hora','tipoServicio','nombreBarbero','nombres','telefono','correoE','acciones'];
   dataSource = new MatTableDataSource<Citas>();
   #loading: boolean = false;
 
@@ -36,9 +45,9 @@ export class CitasComponent {
     }
   }
 
-    agregarCita(): void {
-        const cita: Citas = {
-
+    agregarCitas(): void {
+      
+        const citas: Citas = {
           fechaCita: this.form.value.fechaCita,
           hora: this.form.value.hora,
           tipoServicio: this.form.value.tipoServicio,
@@ -48,7 +57,7 @@ export class CitasComponent {
           correoE: this.form.value.correoE,
         }
 
-            this.listaCitas.push(cita);
+            this.listaCitas.push(citas);
             this.dataSource.data = this.listaCitas;
 
             this.mensajeExito('registrado');
@@ -59,7 +68,7 @@ export class CitasComponent {
   
 
   mensajeExito(texto: string) {
-    this._snackBar.open(`La cita fue ${texto} con exito`, 'Sistema', {
+    this._snackBar.open(`la cita fue ${texto} con exito`, 'Sistema', {
       duration: 4000,
       horizontalPosition: 'right',
       verticalPosition: 'top'
@@ -81,8 +90,8 @@ export class CitasComponent {
     this.dataSource.data = this.listaCitas;
   }
 
-  mostrar(element: Cliente): void {
-    console.log(element.nombre);
+  mostrar(element: Citas): void {
+    console.log(element.nombres);
     console.log(JSON.stringify(element));
     this.router.navigate(['mostrar',JSON.stringify(element)]);
   }
@@ -102,20 +111,17 @@ export class CitasComponent {
     private _snackBar: MatSnackBar, 
     private aRoute: ActivatedRoute){
       this.form = this.fb.group({
-        cedula: ['',
-          [
-            Validators.required,
-            Validators.maxLength(10),
-            Validators.minLength(10),
-            Validators.pattern(/^([0-9])*$/)
-          ]
-        ],
-        apellido: ['', Validators.required],
-        nombre: ['', Validators.required],
+        fechaCita: ['', Validators.required],
+        hora: ['', Validators.required],
+        tipoServicio: ['', Validators.required],
+        nombreBarbero: ['', Validators.required],
+        nombres: ['', Validators.required],
+        telefono: ['', Validators.required],
         correoE: ['', Validators.required]
   
       })
-    }
+
+  }
   }
 
 

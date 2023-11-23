@@ -32,6 +32,8 @@ export class VentasComponent implements AfterViewInit{
   listaPago: Opciones[] = [
     { id: 1, valor: 'Paypal' },
     { id: 2, valor: 'Visa' },
+    { id: 3, valor: 'Mastercard' },
+    { id: 4, valor: 'Ahorros' },
   ];
 
   displayedColumns: string[] = ['nombreCliente','nombreProducto','cantidad','metodoPago','fechaRegistro', 'acciones'];
