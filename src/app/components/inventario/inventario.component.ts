@@ -16,7 +16,7 @@ export class InventarioComponent {
   form: FormGroup;
   listaProducto: Producto[] = [];
 
-  displayedColumns: string[] = ['nombreProducto','cantidadInventario','precio','descripcion', 'acciones'];
+  displayedColumns: string[] = ['nombreProducto','cantidadProductos','precio','descripcion', 'acciones'];
   dataSource = new MatTableDataSource<Producto>();
   #loading: boolean = false;
 
@@ -37,7 +37,7 @@ export class InventarioComponent {
       agregarProducto(): void {
         const producto: Producto = {
           nombreProducto: this.form.value.nombreProducto,
-          cantidadInventario: this.form.value.cantidadInventario,
+          cantidadProductos: this.form.value.cantidadProductos,
           precio: this.form.value.precio,
           descripcion: this.form.value.descripcion
         }
@@ -97,7 +97,7 @@ export class InventarioComponent {
     private aRoute: ActivatedRoute){
       this.form = this.fb.group({
         nombreProducto: ['', Validators.required],
-        cantidadInventario: ['', Validators.required],
+        cantidadProductos: ['', Validators.required],
         precio: [ '',
         Validators.required,
         Validators.pattern(/^(\d{1,2}(\.\d{1,2})?)$/)

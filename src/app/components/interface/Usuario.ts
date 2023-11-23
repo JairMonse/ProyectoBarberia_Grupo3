@@ -3,5 +3,5 @@ export interface Usuario {
     apellido: string;
     nombre: string;
     correoE: string;
-    rol: string;
+    rol?: string;
   }
