@@ -1,42 +1,42 @@
+<app-header></app-header>
+<div class="container mt-4">
+  <router-outlet></router-outlet>
+  <section>
+    <mat-card class="card">
+      <mat-card-subtitle>
+        Login
+      </mat-card-subtitle>
+      <form [formGroup]="form" (ngSubmit)="login()" class="container text-center">
 
-    <div class="container mt-4">
-      <router-outlet></router-outlet>
-        <section>
-        <mat-card class="card">
-          <mat-card-subtitle>
-            Login
-          </mat-card-subtitle>
-          <form [formGroup]="form" (ngSubmit)="login()" class="container text-center">
-      
-            <mat-grid-list cols="2" rowHeight="85px" >
-      
-              <mat-grid-tile>
-                <mat-form-field appearance="outline">
-                  <mat-label>Usuario</mat-label>
-                  <input formControlName="username" matInput autocomplete="off">
-                </mat-form-field>
-              </mat-grid-tile>
-              
+        <mat-grid-list cols="2" rowHeight="85px">
+
           <mat-grid-tile>
-                <mat-form-field appearance="outline">
-                  <mat-label>Contraseña</mat-label>
-                  <input formControlName="password" matInput type="password" autocomplete="off">
-                </mat-form-field>
-              </mat-grid-tile>
-      
-              <mat-grid-tile [colspan]="2">
-                <button [disabled]="form.invalid" type="submit" class="btnAceptar" mat-raised-button color="primary">
-                    Iniciar Sesión
-                  </button>
-              </mat-grid-tile>
-              
-              <mat-grid-tile [colspan]="2">
-                <button type="submit" routerLink="crear-usuario" mat-raised-button color="primary">
-                  Registrar Usuario
-                  </button>
-              </mat-grid-tile>
+            <mat-form-field appearance="outline">
+              <mat-label>Usuario</mat-label>
+              <input formControlName="username" matInput autocomplete="off">
+            </mat-form-field>
+          </mat-grid-tile>
 
-            </mat-grid-list>
-          </form>
-        </mat-card>
-        
+          <mat-grid-tile>
+            <mat-form-field appearance="outline">
+              <mat-label>Contraseña</mat-label>
+              <input formControlName="password" matInput type="password" autocomplete="off">
+            </mat-form-field>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="2">
+            <button [disabled]="form.invalid" type="submit" class="btnAceptar" mat-raised-button color="primary">
+              Iniciar Sesión
+            </button>
+          </mat-grid-tile>
+
+          <mat-grid-tile [colspan]="2">
+            <button type="submit" routerLink="crear-usuario" mat-raised-button color="primary">
+              Registrar Usuario
+            </button>
+          </mat-grid-tile>
+
+        </mat-grid-list>
+      </form>
+    </mat-card>
+    <app-footer></app-footer>

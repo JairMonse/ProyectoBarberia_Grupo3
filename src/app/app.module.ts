@@ -1,24 +1,24 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { MatMenuModule} from '@angular/material/menu';
-import {MatButtonModule} from '@angular/material/button';
-import {MatListModule} from '@angular/material/list';
-import {MatIconModule} from '@angular/material/icon';
-import {MatTableModule} from '@angular/material/table';
-import {MatCardModule} from '@angular/material/card';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatFormFieldModule} from '@angular/material/form-field'
-import {MatInputModule} from '@angular/material/input';
-import {FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatSelectModule} from '@angular/material/select';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
-import {MatNativeDateModule} from '@angular/material/core';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatSortModule} from '@angular/material/sort';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatRadioModule} from '@angular/material/radio';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatRadioModule } from '@angular/material/radio';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,6 +33,18 @@ import { VentasComponent } from './components/ventas/ventas.component';
 import { InventarioComponent } from './components/inventario/inventario.component';
 import { CitasComponent } from './components/citas/citas.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { NavigatorComponent } from './admins/page/navigator/navigator.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDialogModule } from '@angular/material/dialog';
+import { AuthenticationComponent } from './admins/page/authentication/authentication.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { TableBarberosComponent } from './admins/components/barberos/table-barberos/table-barberos.component';
+import { AddEditBarberosComponent } from './admins/components/barberos/add-edit-barberos/add-edit-barberos.component';
+import { InfoBarberosComponent } from './admins/components/barberos/info-barberos/info-barberos.component';
+import { DeleteBarberosComponent } from './admins/components/barberos/delete-barberos/delete-barberos.component';
+import { ExperienciaPipe } from './core/pipes/experiencia.pipe';
 
 @NgModule({
   declarations: [
@@ -46,10 +58,17 @@ import { MenuComponent } from './components/menu/menu.component';
     VentasComponent,
     InventarioComponent,
     CitasComponent,
-    MenuComponent
+    MenuComponent,
+    NavigatorComponent,
+    AuthenticationComponent,
+    TableBarberosComponent,
+    AddEditBarberosComponent,
+    InfoBarberosComponent,
+    DeleteBarberosComponent,
+    ExperienciaPipe
   ],
   imports: [
-    
+
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -71,10 +90,15 @@ import { MenuComponent } from './components/menu/menu.component';
     MatPaginatorModule,
     MatSortModule,
     MatSnackBarModule,
-    MatRadioModule
+    MatRadioModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatExpansionModule,
+    MatDialogModule
 
   ],
-  
+
   providers: [],
   bootstrap: [AppComponent]
 })

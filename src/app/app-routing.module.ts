@@ -8,24 +8,38 @@ import { InventarioComponent } from './components/inventario/inventario.componen
 import { VentasComponent } from './components/ventas/ventas.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { CitasComponent } from './components/citas/citas.component';
+import { AuthenticationComponent } from './admins/page/authentication/authentication.component';
+import { NavigatorComponent } from './admins/page/navigator/navigator.component';
+import { TableBarberosComponent } from './admins/components/barberos/table-barberos/table-barberos.component';
 
 const routes: Routes = [
 
   { path: '', redirectTo: 'menu', pathMatch: 'full' },
-  { path: 'menu', component: MenuComponent},
-  { path: 'login', component: LoginComponent,
-  children:[
-    {path:'crear-usuario',component:CrearUsuarioComponent},
-  ]},
-  { path: 'cliente', component: ClienteComponent,
-  children:[
-    {path:'registrar-cliente',component:RegistrarClienteComponent},
-  ]},
-  { path: 'inventario', component: InventarioComponent},
-  { path: 'ventas', component: VentasComponent},
-  { path: 'citas', component: CitasComponent},
+  { path: 'menu', component: MenuComponent },
+  {
+    path: 'login', component: LoginComponent,
+    children: [
+      { path: 'crear-usuario', component: CrearUsuarioComponent },
+    ]
+  },
+  {
+    path: 'cliente', component: ClienteComponent,
+    children: [
+      { path: 'registrar-cliente', component: RegistrarClienteComponent },
+    ]
+  },
+  { path: 'inventario', component: InventarioComponent },
+  { path: 'ventas', component: VentasComponent },
+  { path: 'citas', component: CitasComponent },
+  { path: 'login-admins', component: AuthenticationComponent },
+  { path: 'dashboard', component: NavigatorComponent,
+    children: [
+      { path: '', redirectTo: 'barberos', pathMatch: 'full' },
+      { path: 'barberos', component: TableBarberosComponent }
+    ]
+  },
   { path: '**', redirectTo: 'menu', pathMatch: 'full' }
-  
+
 
 ];
 
