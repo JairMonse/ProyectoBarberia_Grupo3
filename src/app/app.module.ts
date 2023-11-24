@@ -45,6 +45,7 @@ import { AddEditBarberosComponent } from './admins/components/barberos/add-edit-
 import { InfoBarberosComponent } from './admins/components/barberos/info-barberos/info-barberos.component';
 import { DeleteBarberosComponent } from './admins/components/barberos/delete-barberos/delete-barberos.component';
 import { ExperienciaPipe } from './core/pipes/experiencia.pipe';
+import { BarberosPageComponent } from './components/barberos-page/barberos-page.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { ExperienciaPipe } from './core/pipes/experiencia.pipe';
     AddEditBarberosComponent,
     InfoBarberosComponent,
     DeleteBarberosComponent,
-    ExperienciaPipe
+    ExperienciaPipe,
+    BarberosPageComponent
   ],
   imports: [
 

@@ -10,7 +10,7 @@ export class BarberoService {
 
   listBarberos: BarberoInterface[] = [
     {
-      id: 1, nombres: 'Axel Castro Mendieta', especialidad: 'Corte de cabello masculino', experiencia: 5,
+      id: 1, nombres: 'Axel Castro', especialidad: 'Corte de cabello masculino', experiencia: 5,
       telefono: 123456789, imageName: 'https://thumbs.dreamstime.com/b/foto-de-barberero-barbulista-barbudo-con-tijeras-barber%C3%ADa-en-gris-estudio-279613924.jpg', disponibilidad: true
     },
     {

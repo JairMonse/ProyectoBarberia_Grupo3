@@ -11,6 +11,7 @@ import { CitasComponent } from './components/citas/citas.component';
 import { AuthenticationComponent } from './admins/page/authentication/authentication.component';
 import { NavigatorComponent } from './admins/page/navigator/navigator.component';
 import { TableBarberosComponent } from './admins/components/barberos/table-barberos/table-barberos.component';
+import { BarberosPageComponent } from './components/barberos-page/barberos-page.component';
 
 const routes: Routes = [
 
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'ventas', component: VentasComponent },
   { path: 'citas', component: CitasComponent },
   { path: 'login-admins', component: AuthenticationComponent },
+  { path: 'barberos', component: BarberosPageComponent },
   { path: 'dashboard', component: NavigatorComponent,
     children: [
       { path: '', redirectTo: 'barberos', pathMatch: 'full' },
