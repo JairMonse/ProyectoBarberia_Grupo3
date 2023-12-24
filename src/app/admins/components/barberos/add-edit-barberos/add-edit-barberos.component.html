@@ -12,14 +12,26 @@
 
             <mat-form-field appearance="outline">
                 <mat-label> Especialidad </mat-label>
-                <input type="text" matInput autocomplete="off" formControlName="especialidad">
-                <mat-icon matPrefix>science</mat-icon>
+                <mat-select formControlName="especialidad">
+                    <mat-option *ngFor="let item of listEspecialidades" [value]="item.id"> {{ item.descripcion
+                        }}</mat-option>
+                </mat-select>
+                <mat-icon matPrefix>sports_martial_arts</mat-icon>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label> Jornada </mat-label>
+                <mat-select formControlName="jornada">
+                    <mat-option *ngFor="let item of listJornadas" [value]="item.id"> {{ item.disponibilidad
+                        }}</mat-option>
+                </mat-select>
+                <mat-icon matPrefix>av_timer</mat-icon>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
                 <mat-label> Experiencia </mat-label>
                 <input type="number" matInput autocomplete="off" formControlName="experiencia">
-                <mat-icon matPrefix>sports_martial_arts</mat-icon>
+                <mat-icon matPrefix>event_repeat</mat-icon>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
@@ -43,8 +55,15 @@
                     </button>
                 </div>
                 <div class="col">
-                    <button class="btn btn-success btn-sm rounded-1 w-100" type="submit">
+                    <button class="btn btn-success btn-sm rounded-1 w-100" *ngIf="!bandera" type="submit">
                         <mat-icon>{{iconName}}</mat-icon>
+                    </button>
+                    <button class="btn btn-success btn-sm rounded-1 w-100" *ngIf="bandera" disabled>
+                        <div class="d-flex justify-content-center align-items-center pb-1">
+                            <div class="spinner-border spinner-border-sm mt-1" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
                     </button>
                 </div>
             </div>

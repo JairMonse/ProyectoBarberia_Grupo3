@@ -12,7 +12,7 @@
             </path>
           </svg>
         </div>
-        <p class="name-client"> Axel Castro
+        <p class="name-client"> {{nombres}}
           <span> Administrador</span>
         </p>
       </div>
@@ -35,17 +35,13 @@
                 <span>Barberos</span>
               </mat-panel-description>
             </mat-expansion-panel-header>
-            <button class="btn btn-sm btn-link" routerLink="/dashboard/barberos">
+            <button class="btn btn-sm btn-link" routerLink="/dashboard/custom-barberos">
               <mat-icon>settings</mat-icon> Gestionar
-            </button>
-            <button class="btn btn-sm btn-link" routerLink="/dashboard/horarios">
-              <mat-icon>schedule</mat-icon> Horarios
             </button>
           </mat-expansion-panel>
         </div>        
 
       </mat-accordion>
-
 
     </mat-nav-list>
 
@@ -63,7 +59,7 @@
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item routerLink="">
+        <button mat-menu-item (click)="cerrarSesion()">
           <mat-icon>logout</mat-icon>
           <span>Cerrar Sesión</span>
         </button>

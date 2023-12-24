@@ -22,14 +22,15 @@
         <div class="container ms-2" *ngFor="let items of barberos">
             <div class="card">
                 <div class="card-img overflow-hidden">
-                    <img src="{{items.imageName}}" style="width: 100%;" alt="">
+                    <img src="assets/img/barberos/{{items.imageName}}" style="width: 100%;" alt="">
                 </div>
                 <div class="card-info">
                   <p class="text-title">{{items.nombres}} </p>
-                  <p class="text-body">{{items.especialidad}}, {{items.experiencia}} años de experiencia</p>
+                  <p class="text-body">{{items.descripcion}}, {{items.experiencia}} años de experiencia</p>
                 </div>
                 <div class="card-footer">
                 <span class="text-title">Teléfono: {{items.telefono}}</span>
               </div></div>
         </div>            
     </div>
+<app-footer></app-footer>

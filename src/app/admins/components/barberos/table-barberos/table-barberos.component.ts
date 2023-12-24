@@ -19,6 +19,7 @@ export class TableBarberosComponent {
 
   displayedColumns: string[] = ['nombres', 'telefono', 'especialidad', 'experiencia', 'acciones'];
   dataSource = new MatTableDataSource<BarberoInterface>();
+  bandera: boolean = false;
 
   constructor(
     private _barberosService: BarberoService,
@@ -46,11 +47,16 @@ export class TableBarberosComponent {
   }
 
   ngOnInit() {
-    this.getBarberos();
+    this.getBarberos();    
   }
 
   getBarberos() {
-    this.dataSource.data = this._barberosService.get()
+    this.bandera = true;
+    this._barberosService.getAdmin().subscribe({
+      next: (data) => this.dataSource.data = data,
+      error: () => this._alert.error("Ha ocurrido un error"),
+      complete: () => this.bandera = false
+    })
   }
 
   openAdd() {
@@ -58,10 +64,7 @@ export class TableBarberosComponent {
       autoFocus: false,
       disableClose: true,
       width: '20rem',
-    }).afterClosed().subscribe(
-      (result: string) => {
-        this.handleDialogClose(result);
-      });
+    }).afterClosed().subscribe((datosCierre) => this.handleDialogClosure(datosCierre));
   }
 
   openEdit(barbero: BarberoInterface) {
@@ -70,10 +73,15 @@ export class TableBarberosComponent {
       disableClose: true,
       width: '20rem',
       data: barbero
-    }).afterClosed().subscribe(
-      (result: string) => {
-        this.handleDialogClose(result);
-      });
+    }).afterClosed().subscribe((datosCierre) => this.handleDialogClosure(datosCierre));
+  }
+
+  openDelete(barbero: BarberoInterface) {
+    this.dialog.open(DeleteBarberosComponent, {
+      autoFocus: false,
+      width: 'auto',
+      data: barbero
+    }).afterClosed().subscribe((datosCierre) => this.handleDialogClosure(datosCierre));
   }
 
   openInfo(barbero: BarberoInterface) {
@@ -84,23 +92,13 @@ export class TableBarberosComponent {
     })
   }
 
-  openDelete(barbero: BarberoInterface) {
-    this.dialog.open(DeleteBarberosComponent, {
-      autoFocus: false,
-      width: 'auto',
-      data: barbero
-    }).afterClosed().subscribe(
-      (result: string) => {
-        this.handleDialogClose(result);
-      });
-  }
-
-  private handleDialogClose(messageType: string): void {
-    if (messageType === 'success') {
-      this.getBarberos()
-      this._alert.success("Operación completada con éxito");
-    } else if (messageType === 'error') {
-      this._alert.error("Error en la operación");
+  private handleDialogClosure(datosCierre: any) {
+    if (datosCierre.estado === false || datosCierre === false) {
+      this.getBarberos();
+      this._alert.error("Ha ocurrido un error");
+    } else if (datosCierre.estado === true) {
+      this.getBarberos();
+      this._alert.success(`${datosCierre.message}`);
     }
   }
 

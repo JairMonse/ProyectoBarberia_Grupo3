@@ -19,6 +19,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,7 +27,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ClienteComponent } from './components/cliente/cliente.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RegistrarClienteComponent } from './components/cliente/registrar-cliente/registrar-cliente.component';
 import { LoginComponent } from './components/login/login.component';
 import { CrearUsuarioComponent } from './components/login/crear-usuario/crear-usuario.component';
 import { VentasComponent } from './components/ventas/ventas.component';
@@ -48,6 +48,7 @@ import { ExperienciaPipe } from './core/pipes/experiencia.pipe';
 import { BarberosPageComponent } from './components/barberos-page/barberos-page.component';
 
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,6 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
     HeaderComponent,
     FooterComponent,
     ClienteComponent,
-    RegistrarClienteComponent,
     LoginComponent,
     CrearUsuarioComponent,
     VentasComponent,
@@ -100,8 +100,10 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
     MatSidenavModule,
     MatExpansionModule,
     MatDialogModule,
+    MatProgressBarModule,
 
-    NgxMaterialTimepickerModule
+    NgxMaterialTimepickerModule,
+    HttpClientModule
 
   ],
 

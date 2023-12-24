@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ClienteComponent } from './components/cliente/cliente.component';
-import { RegistrarClienteComponent } from './components/cliente/registrar-cliente/registrar-cliente.component';
 import { LoginComponent } from './components/login/login.component';
 import { CrearUsuarioComponent } from './components/login/crear-usuario/crear-usuario.component';
 import { InventarioComponent } from './components/inventario/inventario.component';
@@ -12,6 +11,7 @@ import { AuthenticationComponent } from './admins/page/authentication/authentica
 import { NavigatorComponent } from './admins/page/navigator/navigator.component';
 import { TableBarberosComponent } from './admins/components/barberos/table-barberos/table-barberos.component';
 import { BarberosPageComponent } from './components/barberos-page/barberos-page.component';
+import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
 
@@ -23,20 +23,22 @@ const routes: Routes = [
       { path: 'crear-usuario', component: CrearUsuarioComponent },
     ]
   },
-  { path: 'cliente', component: ClienteComponent},
+  { path: 'cliente', component: ClienteComponent },
   { path: 'inventario', component: InventarioComponent },
   { path: 'ventas', component: VentasComponent },
   { path: 'citas', component: CitasComponent },
   { path: 'login-admins', component: AuthenticationComponent },
   { path: 'barberos', component: BarberosPageComponent },
-  { path: 'dashboard', component: NavigatorComponent,
+  {
+    path: 'dashboard',
+    component: NavigatorComponent,
+    canActivate: [AuthGuard],
     children: [
-      { path: '', redirectTo: 'barberos', pathMatch: 'full' },
-      { path: 'barberos', component: TableBarberosComponent }
+      { path: '', redirectTo: 'custom-barberos', pathMatch: 'full' },
+      { path: 'custom-barberos', component: TableBarberosComponent }
     ]
   },
   { path: '**', redirectTo: 'menu', pathMatch: 'full' }
-
 
 ];
 
